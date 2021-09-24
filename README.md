@@ -601,7 +601,7 @@ Create an IPFS folder from a collection of IPFS files
 #### Syntax
 
 ```javascript
-const cid = await rarepress.folder(<folder mapping>)
+const cid = await rarepress.fs.folder(<folder mapping>)
 ```
 
 The `<folder mapping>` is a mapping between file names and their corresponding IPFS CIDs.
@@ -615,7 +615,7 @@ The `<folder mapping>` is a mapping between file names and their corresponding I
 The `<folder mapping>` is a key/value object made up of filenames and their corresponding IPFS CIDs. Here's what it looks like:
 
 ```javascript
-const cid = await rarepress.folder({
+const cid = await rarepress.fs.folder({
   <filename1>: <IPFS CID1>,
   <filename2>: <IPFS CID2>,
   <filename3>: <IPFS CID3>
@@ -638,14 +638,14 @@ let mapping = {
   "index.js": cid2,
   "package.json": cid3
 }
-// 2. Create a folder by passing the mapping to rarepress.folder()
-let folder_cid = await rarepress.folder(mapping)
+// 2. Create a folder by passing the mapping to rarepress.fs.folder()
+let folder_cid = await rarepress.fs.folder(mapping)
 ```
 
 You can also do abbreviate the whole thing into a single line, so that files are added and then the folder is created from the files in a single line:
 
 ```javascript
-let folder_cid = await rarepress.folder({
+let folder_cid = await rarepress.fs.folder({
   "aperank.png": await rarepress.fs.add("https://raw.githubusercontent.com/skogard/aperank/main/public/aperank.png"),
   "readme.md": await rarepress.fs.add("https://raw.githubusercontent.com/skogard/aperank/main/README.md"),
   "index.js": await rarepress.fs.add('https://raw.githubusercontent.com/skogard/aperank/main/index.js'),
@@ -660,7 +660,7 @@ returns a [promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
 You can use the folder CID when creating your NFT by constructing the file paths using the folder CID. Example:
 
 ```javascript
-let folder_cid = await rarepress.folder({
+let folder_cid = await rarepress.fs.folder({
   "aperank.png": await rarepress.fs.add("https://raw.githubusercontent.com/skogard/aperank/main/public/aperank.png"),
   "readme.md": await rarepress.fs.add("https://raw.githubusercontent.com/skogard/aperank/main/README.md"),
   "index.js": await rarepress.fs.add('https://raw.githubusercontent.com/skogard/aperank/main/index.js'),
